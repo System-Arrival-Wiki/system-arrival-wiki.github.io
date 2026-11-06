@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="fr" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>document.documentElement.className+=" js"</script>
+<title>Rechercher - System Arrival Wiki de la communauté</title>
+<link rel="icon" type="image/webp" href="../../assets/icons/SACWlogo_fr.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&amp;display=swap">
+<link rel="stylesheet" href="../../assets/css/wiki.css">
+</head>
+<body>
+<header class="top">
+  <div class="bar">
+    <a class="brand" href="../index.html"><img class="logo" src="../../assets/icons/SACWlogo_fr.webp" alt="" width="64" height="64" onerror="this.style.display='none'"><span>System Arrival Wiki de la communauté</span></a>
+    <details class="lang">
+      <summary aria-label="Langue"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3.500 3.500 3.500 14.500 0 18M12 3c-3.500 3.500-3.500 14.500 0 18"/></svg><span lang="fr">Français</span></summary>
+      <ul><li><a href="../../en/search/index.html" lang="en" hreflang="en" data-code="en">English</a></li><li><a href="../../ar/search/index.html" lang="ar" hreflang="ar" data-code="ar">العربية</a></li><li><a href="../../de/search/index.html" lang="de" hreflang="de" data-code="de">Deutsch</a></li><li><a href="../../es/search/index.html" lang="es" hreflang="es" data-code="es">Español</a></li><li><a href="../../fr/search/index.html" lang="fr" hreflang="fr" data-code="fr" aria-current="true">Français</a></li><li><a href="../../hi/search/index.html" lang="hi" hreflang="hi" data-code="hi">हिन्दी</a></li><li><a href="../../id/search/index.html" lang="id" hreflang="id" data-code="id">Bahasa Indonesia</a></li><li><a href="../../it/search/index.html" lang="it" hreflang="it" data-code="it">Italiano</a></li><li><a href="../../ja/search/index.html" lang="ja" hreflang="ja" data-code="ja">日本語</a></li><li><a href="../../ko/search/index.html" lang="ko" hreflang="ko" data-code="ko">한국어</a></li><li><a href="../../pl/search/index.html" lang="pl" hreflang="pl" data-code="pl">Polski</a></li><li><a href="../../pt/search/index.html" lang="pt" hreflang="pt" data-code="pt">Português (Portugal)</a></li><li><a href="../../pt-br/search/index.html" lang="pt-BR" hreflang="pt-BR" data-code="pt-br">Português (Brasil)</a></li><li><a href="../../ru/search/index.html" lang="ru" hreflang="ru" data-code="ru">Русский</a></li><li><a href="../../th/search/index.html" lang="th" hreflang="th" data-code="th">ไทย</a></li><li><a href="../../tr/search/index.html" lang="tr" hreflang="tr" data-code="tr">Türkçe</a></li><li><a href="../../vi/search/index.html" lang="vi" hreflang="vi" data-code="vi">Tiếng Việt</a></li><li><a href="../../zh-hans/search/index.html" lang="zh-Hans" hreflang="zh-Hans" data-code="zh-hans">简体中文</a></li><li><a href="../../zh-hant/search/index.html" lang="zh-Hant" hreflang="zh-Hant" data-code="zh-hant">繁體中文</a></li></ul>
+    </details>
+  </div>
+  <nav class="nav" aria-label="System Arrival Wiki de la communauté"><a href="../index.html"><span class="fb ai">&lt;AI&gt;</span> Accueil</a><a href="../search/index.html" class="active">Rechercher</a><a href="../buildings/index.html">Bâtiment</a><a href="../crafting/index.html">Fabrication</a><a href="../items/index.html">Objet</a><a href="../fractals/index.html">Fractales</a><a href="../core_skills/index.html">Aptitudes</a><a href="../character_skills/index.html">Compétences</a><a href="../psi/index.html">Capacités psi</a><a href="../characters/index.html">Personnages</a><a href="../mods_weapons/index.html">Modifications des armes</a><a href="../mods_armor/index.html">Mods d&#x27;armure</a><a href="../mods_vehicles/index.html"><span class="fb ai">&lt;AI&gt;</span> Modification du véhicule</a></nav>
+</header>
+<main>
+<h1>Rechercher</h1>
+<div class="srbox"><input id="sr-q" type="search" autocomplete="off" spellcheck="false" placeholder="Rechercher des bâtiments, des compétences, des capacités psi, des fractales, des objets..." aria-label="Rechercher"></div>
+<p class="sub" id="sr-hint"><span class="fb ai">&lt;AI&gt;</span> Saisissez au moins 2 lettres. Les mots peuvent être dans n&#x27;importe quel ordre ; on trouve des noms anglais dans toutes les langues.</p>
+<p class="sub" id="sr-count" aria-live="polite"></p>
+<ul class="srlist" id="sr-list"></ul>
+<button type="button" class="chip" id="sr-more" hidden><span class="fb ai">&lt;AI&gt;</span> Afficher plus</button>
+<noscript><p class="sub"><span class="fb ai">&lt;AI&gt;</span> La recherche nécessite JavaScript.</p></noscript>
+<div id="sr-cfg" hidden data-lang="fr" data-base="../../assets/search/" data-none="Aucun résultat." data-count="{n} résultats" data-loading="Chargement ..." data-other="Aucun résultat trouvé dans cette langue. {n} renvoie des résultats dans d&#x27;autres langues :" data-other-loading="Recherche dans d&#x27;autres langues..." data-labels="{&quot;buildings&quot;: &quot;Bâtiment&quot;, &quot;crafting&quot;: &quot;Fabrication&quot;, &quot;items&quot;: &quot;Objet&quot;, &quot;fractals&quot;: &quot;Fractales&quot;, &quot;core_skills&quot;: &quot;Aptitudes&quot;, &quot;character_skills&quot;: &quot;Compétences&quot;, &quot;psi&quot;: &quot;Capacités psi&quot;, &quot;characters&quot;: &quot;Personnages&quot;, &quot;mods_weapons&quot;: &quot;Modifications des armes&quot;, &quot;mods_armor&quot;: &quot;Mods d&#x27;armure&quot;, &quot;mods_vehicles&quot;: &quot;Modification du véhicule&quot;}"></div>
+</main>
+<script src="../../assets/js/wiki.js" defer></script>
+</body>
+</html>

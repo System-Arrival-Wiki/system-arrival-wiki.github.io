@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>System Arrival Wiki</title>
+<meta http-equiv="refresh" content="2;url=en/index.html">
+<style>body{background:#14161c;color:#ecedf4;font-family:sans-serif;padding:40px}a{color:#54a8e8}</style>
+<script>
+(function () {
+  var L = ['en','ar','de','es','fr','hi','id','it','ja','ko','pl','pt','pt-br','ru','th','tr','vi','zh-hans','zh-hant'], pick = null;
+  try { pick = localStorage.getItem('sa2wiki_lang'); } catch (e) {}
+  if (L.indexOf(pick) < 0) {
+    pick = null;
+    var n = navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || 'en'];
+    for (var i = 0; i < n.length && !pick; i++) {
+      var c = String(n[i]).toLowerCase();
+      if (/^zh-(tw|hk|mo|hant)/.test(c)) c = 'zh-hant'; else if (/^zh/.test(c)) c = 'zh-hans';
+      if (L.indexOf(c) >= 0) pick = c; else if (L.indexOf(c.split('-')[0]) >= 0) pick = c.split('-')[0];
+    }
+  }
+  location.replace((pick || 'en') + '/index.html');
+})();
+</script></head>
+<body><p><a href="en/index.html">System Arrival Wiki</a></p></body></html>

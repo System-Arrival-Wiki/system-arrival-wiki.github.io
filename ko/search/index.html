@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="ko" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>document.documentElement.className+=" js"</script>
+<title>검색 - System Arrival 커뮤니티 위키</title>
+<link rel="icon" type="image/webp" href="../../assets/icons/SACWlogo_ko.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&amp;family=Noto+Sans+KR:wght@400;700&amp;display=swap">
+<link rel="stylesheet" href="../../assets/css/wiki.css">
+</head>
+<body>
+<header class="top">
+  <div class="bar">
+    <a class="brand" href="../index.html"><img class="logo" src="../../assets/icons/SACWlogo_ko.webp" alt="" width="64" height="64" onerror="this.style.display='none'"><span>System Arrival 커뮤니티 위키</span></a>
+    <details class="lang">
+      <summary aria-label="언어"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3.500 3.500 3.500 14.500 0 18M12 3c-3.500 3.500-3.500 14.500 0 18"/></svg><span lang="ko">한국어</span></summary>
+      <ul><li><a href="../../en/search/index.html" lang="en" hreflang="en" data-code="en">English</a></li><li><a href="../../ar/search/index.html" lang="ar" hreflang="ar" data-code="ar">العربية</a></li><li><a href="../../de/search/index.html" lang="de" hreflang="de" data-code="de">Deutsch</a></li><li><a href="../../es/search/index.html" lang="es" hreflang="es" data-code="es">Español</a></li><li><a href="../../fr/search/index.html" lang="fr" hreflang="fr" data-code="fr">Français</a></li><li><a href="../../hi/search/index.html" lang="hi" hreflang="hi" data-code="hi">हिन्दी</a></li><li><a href="../../id/search/index.html" lang="id" hreflang="id" data-code="id">Bahasa Indonesia</a></li><li><a href="../../it/search/index.html" lang="it" hreflang="it" data-code="it">Italiano</a></li><li><a href="../../ja/search/index.html" lang="ja" hreflang="ja" data-code="ja">日本語</a></li><li><a href="../../ko/search/index.html" lang="ko" hreflang="ko" data-code="ko" aria-current="true">한국어</a></li><li><a href="../../pl/search/index.html" lang="pl" hreflang="pl" data-code="pl">Polski</a></li><li><a href="../../pt/search/index.html" lang="pt" hreflang="pt" data-code="pt">Português (Portugal)</a></li><li><a href="../../pt-br/search/index.html" lang="pt-BR" hreflang="pt-BR" data-code="pt-br">Português (Brasil)</a></li><li><a href="../../ru/search/index.html" lang="ru" hreflang="ru" data-code="ru">Русский</a></li><li><a href="../../th/search/index.html" lang="th" hreflang="th" data-code="th">ไทย</a></li><li><a href="../../tr/search/index.html" lang="tr" hreflang="tr" data-code="tr">Türkçe</a></li><li><a href="../../vi/search/index.html" lang="vi" hreflang="vi" data-code="vi">Tiếng Việt</a></li><li><a href="../../zh-hans/search/index.html" lang="zh-Hans" hreflang="zh-Hans" data-code="zh-hans">简体中文</a></li><li><a href="../../zh-hant/search/index.html" lang="zh-Hant" hreflang="zh-Hant" data-code="zh-hant">繁體中文</a></li></ul>
+    </details>
+  </div>
+  <nav class="nav" aria-label="System Arrival 커뮤니티 위키"><a href="../index.html"><span class="fb ai">&lt;AI&gt;</span> 홈</a><a href="../search/index.html" class="active">검색</a><a href="../buildings/index.html">건물</a><a href="../crafting/index.html">제작</a><a href="../items/index.html">아이템</a><a href="../fractals/index.html">프랙탈</a><a href="../core_skills/index.html">재능</a><a href="../character_skills/index.html">기술</a><a href="../psi/index.html">사이 능력</a><a href="../characters/index.html">캐릭터</a><a href="../mods_weapons/index.html">무기 개조</a><a href="../mods_armor/index.html">방어구 개조</a><a href="../mods_vehicles/index.html"><span class="fb ai">&lt;AI&gt;</span> 차량 개조</a></nav>
+</header>
+<main>
+<h1>검색</h1>
+<div class="srbox"><input id="sr-q" type="search" autocomplete="off" spellcheck="false" placeholder="건물, 기술, 초능력, 프랙탈, 아이템 등을 검색하세요..." aria-label="검색"></div>
+<p class="sub" id="sr-hint"><span class="fb ai">&lt;AI&gt;</span> 최소 두 글자를 입력하세요. 단어 순서는 상관없습니다. 영어 이름은 모든 언어에서 찾아볼 수 있습니다.</p>
+<p class="sub" id="sr-count" aria-live="polite"></p>
+<ul class="srlist" id="sr-list"></ul>
+<button type="button" class="chip" id="sr-more" hidden><span class="fb ai">&lt;AI&gt;</span> 더보기</button>
+<noscript><p class="sub"><span class="fb ai">&lt;AI&gt;</span> 검색 기능을 사용하려면 JavaScript가 필요합니다.</p></noscript>
+<div id="sr-cfg" hidden data-lang="ko" data-base="../../assets/search/" data-none="아무것도 찾지 못했습니다." data-count="{n} 결과" data-loading="로딩 중..." data-other="이 언어에서는 아무것도 찾을 수 없습니다. {n} 다른 언어에서 다음과 같은 결과를 보여줍니다." data-other-loading="다른 언어로 검색 중..." data-labels="{&quot;buildings&quot;: &quot;건물&quot;, &quot;crafting&quot;: &quot;제작&quot;, &quot;items&quot;: &quot;아이템&quot;, &quot;fractals&quot;: &quot;프랙탈&quot;, &quot;core_skills&quot;: &quot;재능&quot;, &quot;character_skills&quot;: &quot;기술&quot;, &quot;psi&quot;: &quot;사이 능력&quot;, &quot;characters&quot;: &quot;캐릭터&quot;, &quot;mods_weapons&quot;: &quot;무기 개조&quot;, &quot;mods_armor&quot;: &quot;방어구 개조&quot;, &quot;mods_vehicles&quot;: &quot;차량 개조&quot;}"></div>
+</main>
+<script src="../../assets/js/wiki.js" defer></script>
+</body>
+</html>

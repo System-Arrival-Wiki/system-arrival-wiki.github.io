@@ -16,6 +16,35 @@
   }
   window.addEventListener('hashchange', fromHash); fromHash();
 })();
+/* Bestiary: Show entry opens one enemy (all stay shut until clicked); the fractal look-up lists the enemies that drop a fractal (every enemy stays masked until its own entry is open) */
+(function () {
+  var cfgEl = document.getElementById('be-cfg'); if (!cfgEl) return;
+  var cfg = JSON.parse(cfgEl.textContent), sel = document.getElementById('be-fr'), out = document.getElementById('be-out'), all = document.getElementById('be-all');
+  function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  function card(id) { var l = document.querySelectorAll('.mob'); for (var i = 0; i < l.length; i++) if (l[i].getAttribute('data-id') === id) return l[i]; return null; }
+  function draw() {
+    var rows = cfg.rows[sel.value]; if (!rows) { out.innerHTML = ''; return; }
+    var h = '<div class="scroll"><table class="be-t"><thead><tr>' + cfg.heads.map(function (x) { return '<th>' + esc(x) + '</th>'; }).join('') + '</tr></thead><tbody>';
+    rows.forEach(function (r) {
+      var c = card(r[0]), open = !!(c && c.classList.contains('open'));          // every enemy stays masked here until its own entry is open
+      h += '<tr><td>' + (open ? '<button type="button" class="lk" data-id="' + esc(r[0]) + '">' + esc(r[1]) + '</button>' : '<span class="mk">' + esc(cfg.unknown) + '</span>') + '</td><td>' + (open ? esc(r[5]) : '<span class="mk">?????</span>') + '</td><td>' + r[3] + '%</td><td>' + esc(r[4]) + '</td></tr>';
+    });
+    out.innerHTML = h + '</tbody></table></div>';
+  }
+  sel.addEventListener('change', draw);
+  out.addEventListener('click', function (e) { var b = e.target.closest('.lk'); if (!b) return; var c = card(b.getAttribute('data-id')); if (c) { c.classList.add('open'); c.scrollIntoView({ block: 'center' }); } });
+  document.addEventListener('click', function (e) {
+    var b = e.target.closest ? e.target.closest('.mob-show') : null; if (!b) return;
+    b.closest('.mob').classList.add('open'); draw();
+  });
+  if (all) all.addEventListener('click', function () {
+    var on = all.getAttribute('data-on') !== '1', l = document.querySelectorAll('.mob');
+    for (var i = 0; i < l.length; i++) l[i].classList.toggle('open', on);
+    all.setAttribute('data-on', on ? '1' : '0'); all.textContent = all.getAttribute(on ? 'data-hide' : 'data-show'); draw();
+  });
+  function fromHash() { var id = decodeURIComponent((location.hash || '').slice(1)).replace(/^be_/, ''); var c = id && card(id); if (c && !c.classList.contains('boss')) { c.classList.add('open'); } }
+  window.addEventListener('hashchange', fromHash); fromHash();
+})();
 /* Search: every word must be found; results link to the card / row on its page.  Nothing found in this language -> the other languages are searched and the results get a <XX> tag */
 (function () {
   var cfg = document.getElementById('sr-cfg'); if (!cfg) return;

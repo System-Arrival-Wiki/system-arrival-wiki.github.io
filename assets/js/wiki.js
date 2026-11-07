@@ -24,7 +24,8 @@
   function card(id) { var l = document.querySelectorAll('.mob'); for (var i = 0; i < l.length; i++) if (l[i].getAttribute('data-id') === id) return l[i]; return null; }
   function draw() {
     var rows = cfg.rows[sel.value]; if (!rows) { out.innerHTML = ''; return; }
-    var h = '<div class="scroll"><table class="be-t"><thead><tr>' + cfg.heads.map(function (x) { return '<th>' + esc(x) + '</th>'; }).join('') + '</tr></thead><tbody>';
+    var shut = rows.filter(function (r) { var c = card(r[0]); return !(c && c.classList.contains('open')); }).length;
+    var h = (shut ? '<p><button type="button" id="be-these">' + esc(cfg.showThese) + ' (' + shut + ')</button></p>' : '') + '<div class="scroll"><table class="be-t"><thead><tr>' + cfg.heads.map(function (x) { return '<th>' + esc(x) + '</th>'; }).join('') + '</tr></thead><tbody>';
     rows.forEach(function (r) {
       var c = card(r[0]), open = !!(c && c.classList.contains('open'));          // every enemy stays masked here until its own entry is open
       h += '<tr><td>' + (open ? '<button type="button" class="lk" data-id="' + esc(r[0]) + '">' + esc(r[1]) + '</button>' : '<span class="mk">' + esc(cfg.unknown) + '</span>') + '</td><td>' + (open ? esc(r[5]) : '<span class="mk">?????</span>') + '</td><td>' + r[3] + '%</td><td>' + esc(r[4]) + '</td></tr>';
@@ -32,7 +33,9 @@
     out.innerHTML = h + '</tbody></table></div>';
   }
   sel.addEventListener('change', draw);
-  out.addEventListener('click', function (e) { var b = e.target.closest('.lk'); if (!b) return; var c = card(b.getAttribute('data-id')); if (c) { c.classList.add('open'); c.scrollIntoView({ block: 'center' }); } });
+  out.addEventListener('click', function (e) {
+    if (e.target.closest('#be-these')) { (cfg.rows[sel.value] || []).forEach(function (r) { var c = card(r[0]); if (c) c.classList.add('open'); }); draw(); return; }
+    var b = e.target.closest('.lk'); if (!b) return; var c = card(b.getAttribute('data-id')); if (c) { c.classList.add('open'); c.scrollIntoView({ block: 'center' }); } });
   document.addEventListener('click', function (e) {
     var b = e.target.closest ? e.target.closest('.mob-show') : null; if (!b) return;
     b.closest('.mob').classList.add('open'); draw();

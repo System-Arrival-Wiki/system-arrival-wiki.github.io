@@ -154,7 +154,8 @@ html[dir=rtl] .eb-row>*{direction:rtl}
 .card.itm .head{align-items:center;gap:12px}.card.itm .iti{width:64px;height:64px;flex:none;object-fit:contain;border-radius:8px}.card.itm span.iti{display:flex;align-items:center;justify-content:center;font-weight:700;font-size:22px}
 .card.itm h3{font-size:19px}.card.itm .stats{display:flex;flex-wrap:wrap;gap:6px 16px;margin:10px 0 0}.card.itm .kv2 small{color:var(--sub);margin-inline-end:4px}.card.itm .links{display:flex;flex-wrap:wrap;gap:6px 14px;margin:10px 0 0}
 .card.itm[hidden]{display:none}
-.itd{margin-top:10px}.itd summary{cursor:pointer;color:var(--blue);font-weight:700}.itd dl{margin:8px 0 0;display:grid;grid-template-columns:max-content minmax(0,1fr);column-gap:16px}.itd dl div{display:grid;grid-template-columns:subgrid;grid-column:1/-1;gap:0;border-bottom:1px solid #2c3140;padding:3px 0}.itd dt{color:var(--sub)}.itd dd{margin:0;text-align:end;overflow-wrap:anywhere;min-width:0}
+.stfx{margin:10px 0 0;display:grid;grid-template-columns:max-content minmax(0,1fr);column-gap:16px;font-size:14px}.stfx div{display:grid;grid-template-columns:subgrid;grid-column:1/-1;border-top:1px solid #2c3140;padding:4px 0}.stfx dt{color:var(--sub)}.stfx dd{margin:0;overflow-wrap:anywhere}
+.itd{margin-top:10px}.itd summary{cursor:pointer;color:var(--blue);font-weight:700}.itd dl{margin:8px 0 0;display:grid;grid-template-columns:max-content minmax(0,1fr);column-gap:16px}.itd dl div{display:grid;grid-template-columns:subgrid;grid-column:1/-1;gap:0;border-bottom:1px solid #2c3140;padding:3px 0}.itd dt{color:var(--sub)}.itd dd{margin:0;text-align:start;overflow-wrap:anywhere;min-width:0}
 .card.itm:has(details[open]){grid-column:1/-1}
 /* the filter / jump buttons stay under the header while you scroll (not on small screens: they would cover too much) */
 .stickybar{background:var(--bg);padding:10px 0 4px;margin:0 0 22px}

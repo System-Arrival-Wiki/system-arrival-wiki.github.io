@@ -1,3 +1,15 @@
+/* a card that opens (or closes) changes size and the page jumps: scroll so the header of that card is at the top, right under the sticky header / filter bar */
+window.saReveal = function (card) {
+  if (!card) return;
+  requestAnimationFrame(function () { requestAnimationFrame(function () {
+    var hdr = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--hdr'), 10) || 110;
+    var sb = document.querySelector('.stickybar'), off = hdr + (sb && getComputedStyle(sb).position === 'sticky' ? sb.offsetHeight : 0) + 10;
+    var top = card.getBoundingClientRect().top;
+    if (Math.abs(top - off) > 4) window.scrollTo({ top: window.scrollY + top - off, behavior: 'smooth' });
+  }); });
+};
+/* Items: the Details list of a card opens / closes (the toggle event does not bubble: listen while it travels down) */
+document.addEventListener('toggle', function (e) { var d = e.target; if (d && d.matches && d.matches('details.itd')) window.saReveal(d.closest('.card')); }, true);
 /* Buildings: expand / collapse the upgrade path of a card (buttons: .tog inside .card.upg); a link to #building opens that card */
 (function () {
   function setOpen(card, open) {
@@ -8,7 +20,7 @@
     var t = e.target.closest ? e.target.closest('.tog') : null; if (!t) return;
     var card = t.closest('.card'); if (!card) return;
     var open = !card.classList.contains('open'); setOpen(card, open);
-    if (!open) { var r = card.getBoundingClientRect(); if (r.top < 120) window.scrollTo({ top: window.scrollY + r.top - 120 }); }
+    window.saReveal(card);
   });
   function fromHash() {
     var id = decodeURIComponent((location.hash || '').slice(1)); var el = id && document.getElementById(id);
@@ -38,7 +50,7 @@
     var b = e.target.closest('.lk'); if (!b) return; var c = card(b.getAttribute('data-id')); if (c) { c.classList.add('open'); c.scrollIntoView({ block: 'center' }); } });
   document.addEventListener('click', function (e) {
     var b = e.target.closest ? e.target.closest('.mob-show') : null; if (!b) return;
-    b.closest('.mob').classList.add('open'); draw();
+    b.closest('.mob').classList.add('open'); draw(); window.saReveal(b.closest('.mob'));
   });
   if (all) all.addEventListener('click', function () {
     var on = all.getAttribute('data-on') !== '1', l = document.querySelectorAll('.mob');

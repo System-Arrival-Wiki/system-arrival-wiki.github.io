@@ -146,6 +146,14 @@ html[dir=rtl] .eb-row>*{direction:rtl}
 .card.mod .kv{margin:8px 0 0;color:var(--desc)}.card.mod .kv.pen{color:var(--warn)}
 .card.mod small{color:var(--sub);font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;margin-inline-end:6px}
 .card.mod .tags{margin:8px 0 0}.card.mod .tag.slot{border-style:dashed}
+/* Expeditions: step list, panels, plain lists, numbers in tables */
+.exp-steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin:10px 0 0;padding:0;list-style:none;counter-reset:es}
+.exp-steps li{background:var(--card);border:1.5px solid var(--edge);border-radius:12px;padding:12px 16px;counter-increment:es;color:var(--desc)}
+.exp-steps li::before{content:counter(es);display:block;font-weight:700;font-size:26px;color:var(--blue)}.exp-steps li b{color:var(--text);display:block}
+.exp-list{margin:6px 0 0;padding-inline-start:20px;color:var(--desc)}.exp-list li{margin:4px 0}
+.exp-two{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:16px}
+.sec>.panel,.exp-two .panel{background:var(--card);border:1.5px solid var(--edge);border-radius:12px;padding:14px 16px;min-width:0}
+.panel h3{margin:0 0 4px;font-size:18px}.panel .be-t tbody th{text-transform:none;letter-spacing:0;font-size:14px;color:var(--text);font-weight:500;text-align:start}.sec>.panel+.sub{margin-top:12px}td.num,.be-t th.num{text-align:end;white-space:nowrap}
 /* Fractals: text-only cards, filter buttons (without JavaScript the buttons are hidden and every card is shown) */
 .filters{display:none;flex-wrap:wrap;gap:8px;margin:0 0 10px}
 .js .filters{display:flex}
